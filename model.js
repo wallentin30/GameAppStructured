@@ -45,15 +45,11 @@ function reloadData() {
             'Content-Type' : "application/x-www-form-urlencoded"
         }
     }).then(function(response){
-        
         return response.text();
-    }).then(function(regenerateGame){
     })
 }
 
-function editGame(id, gameObject1,callback){
-  console.log(id)
-  console.log(gameObject1)
+function editGame(id, gameObject1){
     fetch(`${apiURL}/games/${id}`, {
         method: "PUT",
         headers: {
@@ -61,10 +57,7 @@ function editGame(id, gameObject1,callback){
         },
         body: gameObject1
     }).then(function(response){
-        return response.text();
-    }).then(function(editGameResponse) {
-       callback(editGameResponse)
-        
+        return response.json();
     })
 }
 

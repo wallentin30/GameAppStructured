@@ -1,33 +1,26 @@
 getGamesList(function(arrayOfGames){
     for(var i = 0; i < arrayOfGames.length; i++) {
-        createDomElement(arrayOfGames[i]);
-        
+        createDomElement(arrayOfGames[i]); 
     }  
 });
 
 function createDomElement(gameObj){
-    var container1 = document.querySelector('.container');
-
+    const container1 = document.querySelector('.container');
     const gameELement = document.createElement("div");
     gameELement.setAttribute('id', gameObj._id)
     gameELement.classList.add('gameList');
     gameELement.innerHTML = `<h1 class = "title">${gameObj.title}</h1> 
-                        <p><strong>${gameObj._id}</strong></p>
                         <img class="imageUrl" src="${gameObj.imageUrl}" />
                         <p class="description">${gameObj.description}</p> 
                         <button class="delete-btn">Delete Game</button>
                         <button class="editBtn" >Edit Game</button>`;   
                         
     container1.appendChild(gameELement);
-    
-
     document.getElementById(`${gameObj._id}`).addEventListener("click", function(){
-        //console.log(event.target);
+
         if(event.target.classList.contains('delete-btn')) {
                 deleteGame(gameELement.getAttribute("id"), function(apiResponse){
-                    console.log('apiResponse ',apiResponse);
                     removeDeletedElementFromDOM(formElement);
-                
                 })
         } else if(event.target.classList.contains('editBtn')) {
                 createUpdateForm(event.target.parentElement) 
@@ -36,13 +29,12 @@ function createDomElement(gameObj){
 }
 
 function createUpdateForm(gameContainer) {
-    console.log(gameContainer);
     if(!document.getElementById('updateForm')) {
         const gameTitle = gameContainer.querySelector('h1');
         const gameDescription = gameContainer.querySelector('.description');
         const gameImageURL = gameContainer.querySelector('.imageUrl'); 
       
-        var formElement = document.createElement('form');
+        const formElement = document.createElement('form');
         formElement.setAttribute('id', 'updateForm')     
         formElement.innerHTML =  ` 
                             <label for="secondGameTitle">Title *</label>
@@ -59,7 +51,7 @@ function createUpdateForm(gameContainer) {
                         
                             `;
         gameContainer.appendChild(formElement); 
-        
+
         gameContainer.querySelector('.cancelBtn').addEventListener('click', function(){
             removeDeletedElementFromDOM(formElement);
         });
@@ -75,7 +67,6 @@ function createUpdateForm(gameContainer) {
             urlencoded.append("imageUrl", updatedGameImageUrl.value);
 
             if(updatedGameTitle.value !== "" && updatedGameDescription.value !== "" && updatedGameDescription.value !== "") {
-                
                 gameContainer.querySelector('h1').innerText = updatedGameTitle.value;
                 gameContainer.querySelector('.description').innerText = updatedGameDescription.value;
                 gameContainer.querySelector('.imageUrl').src = updatedGameImageUrl.value;
@@ -83,9 +74,7 @@ function createUpdateForm(gameContainer) {
             }  
             
             if(updatedGameTitle.value !== gameTitle.value && updatedGameDescription.value !== gameDescription.value && updatedGameImageUrl.value !== gameImageURL.value){
-                editGame(gameContainer.id, urlencoded, function(editGameResponse){
-                    console.log('Raspuns callback PUT ',editGameResponse);                   
-                })
+                editGame(gameContainer.id, urlencoded)
             }
         });
     }
@@ -155,7 +144,9 @@ document.querySelector(".submitBtn").addEventListener("click", function(event){
     }
 })
 
+
 //probabil ca nu e o practica buna dar ne-am jucat putin
+const formForRegen = document.querySelector(".creationForm");
 const reloadDataBase = document.createElement('button');
 reloadDataBase.setAttribute('class', 'reloadDB');
 reloadDataBase.innerHTML = "Reload DataBase";
@@ -167,13 +158,14 @@ reloadDataBase.style.color = "black";
 reloadDataBase.style.fontWeight = "bold";
 reloadDataBase.style.border = "none";
 reloadDataBase.style.borderRadius = "5px";
-const formForRegen = document.querySelector(".creationForm");
+
 formForRegen.appendChild(reloadDataBase);
 
 reloadDataBase.addEventListener('click', function() {
-
+    
     const alertBox = confirm("Do you really want to reload DataBase ?")
     if (alertBox === true) {
         reloadData()
     }
+    
 })
