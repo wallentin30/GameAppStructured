@@ -36,7 +36,7 @@ function createDomElement(gameObj){
 }
 
 function createUpdateForm(gameContainer) {
-    console.log(gameContainer);
+    
     if(!document.getElementById('updateForm')) {
         const gameTitle = gameContainer.querySelector('h1');
         const gameDescription = gameContainer.querySelector('.description');
@@ -155,27 +155,25 @@ document.querySelector(".submitBtn").addEventListener("click", function(event){
     }
 })
 
-/*const reloadDataBase = document.createElement('button');
-
-reloadDataBase.addEventListener('click', function() 
-reloadData(function() {
-    
-    reloadDataBase.setAttribute('class','reloadDB');
-    reloadDataBase.innerHTML = "Reload DataBase";
-    reloadDataBase.style.width = "200px";
-    reloadDataBase.style.padding = "10px";
-    reloadDataBase.style.cursor = "pointer";
-    reloadDataBase.style.backgroundColor = "aquamarine";
-    reloadDataBase.style.color = "black";
-    reloadDataBase.style.fontWeight = "bold";
-    reloadDataBase.style.border = "none";
-    reloadDataBase.style.borderRadius = "5px";
-
-    const formForRegen = document.querySelector(".creationForm");
+const reloadDataBase = document.createElement('button');
+reloadDataBase.setAttribute('class','reloadDB');
+reloadDataBase.innerHTML = "Reload DataBase";
+reloadDataBase.style.width = "200px";
+reloadDataBase.style.padding = "10px";
+reloadDataBase.style.cursor = "pointer";
+reloadDataBase.style.backgroundColor = "aquamarine";
+reloadDataBase.style.color = "black";
+reloadDataBase.style.fontWeight = "bold";
+reloadDataBase.style.border = "none";
+reloadDataBase.style.borderRadius = "5px";
+const formForRegen = document.querySelector(".creationForm");
     formForRegen.appendChild(reloadDataBase);
 
-})*/
-    
+
+ reloadDataBase.addEventListener('click', function() {
+    reloadData()
+ })
+
 // reloadDataBase.addEventListener("click", function() {
 
 //     const alertBox = confirm("Do you really want to reload DataBase ?")
@@ -188,48 +186,3 @@ reloadData(function() {
 // } )
 
 
-
-/*.updateForm {
-    display: flex;
-    flex-direction: column;
-}
-
-.updateForm>label,
-.updateForm>input,
-.updateForm>textarea {
-    float: left;
-    margin: 5px 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-'.updateBtn {
-    width: 100px;
-    height: 20px;
-    background-color: transparent;
-    border: 1px solid green;
-    color: green;
-}
-
-.updateBtn:hover {
-    width: 100px;
-    height: 20px;
-    background-color: green;
-    border: 1px solid green;
-    color: white;
-}
-
-.cancelBtn {
-    width: 100px;
-    height: 20px;
-    background-color: transparent;
-    border: 1px solid red;
-    color: red;
-}
-
-.cancelBtn:hover {
-    width: 100px;
-    height: 20px;
-    background-color: red;
-    border: 1px solid red;
-    color: white;
-} */
