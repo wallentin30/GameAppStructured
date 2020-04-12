@@ -26,8 +26,8 @@ function createDomElement(gameObj){
         if(event.target.classList.contains('delete-btn')) {
                 deleteGame(gameELement.getAttribute("id"), function(apiResponse){
                     console.log('apiResponse ',apiResponse);
-                    removeDeletedElementFromDOM(gameELement);
-                   
+                    removeDeletedElementFromDOM(formElement);
+                
                 })
         } else if(event.target.classList.contains('editBtn')) {
                 createUpdateForm(event.target.parentElement) 
@@ -36,7 +36,7 @@ function createDomElement(gameObj){
 }
 
 function createUpdateForm(gameContainer) {
-    
+    console.log(gameContainer);
     if(!document.getElementById('updateForm')) {
         const gameTitle = gameContainer.querySelector('h1');
         const gameDescription = gameContainer.querySelector('.description');
@@ -52,7 +52,7 @@ function createUpdateForm(gameContainer) {
                             <textarea name="gameDescription" id="secondGameDescription">${gameDescription.textContent}</textarea>
                     
                             <label for="secondGameImageUrl">Image URL *</label>
-                            <input type="text" value="${gameImageURL.src}" name="gameImageUrl" id="secondGameImageUrl_}" />
+                            <input type="text" value="${gameImageURL.src}" name="gameImageUrl" id="secondGameImageUrl" />
                     
                             <button class="updateBtn">Save Changes</button>
                             <button class="cancelBtn">Cancel</button>
@@ -155,34 +155,25 @@ document.querySelector(".submitBtn").addEventListener("click", function(event){
     }
 })
 
+//probabil ca nu e o practica buna dar ne-am jucat putin
 const reloadDataBase = document.createElement('button');
-reloadDataBase.setAttribute('class','reloadDB');
+reloadDataBase.setAttribute('class', 'reloadDB');
 reloadDataBase.innerHTML = "Reload DataBase";
 reloadDataBase.style.width = "200px";
 reloadDataBase.style.padding = "10px";
 reloadDataBase.style.cursor = "pointer";
-reloadDataBase.style.backgroundColor = "aquamarine";
+reloadDataBase.style.backgroundColor = "aqua";
 reloadDataBase.style.color = "black";
 reloadDataBase.style.fontWeight = "bold";
 reloadDataBase.style.border = "none";
 reloadDataBase.style.borderRadius = "5px";
 const formForRegen = document.querySelector(".creationForm");
-    formForRegen.appendChild(reloadDataBase);
+formForRegen.appendChild(reloadDataBase);
 
+reloadDataBase.addEventListener('click', function() {
 
- reloadDataBase.addEventListener('click', function() {
-    reloadData()
- })
-
-// reloadDataBase.addEventListener("click", function() {
-
-//     const alertBox = confirm("Do you really want to reload DataBase ?")
-//     if (alertBox === true ){
-        
-        
-//     }else {
-//         return false;
-//     }
-// } )
-
-
+    const alertBox = confirm("Do you really want to reload DataBase ?")
+    if (alertBox === true) {
+        reloadData()
+    }
+})

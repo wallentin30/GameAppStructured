@@ -45,12 +45,11 @@ function reloadData() {
             'Content-Type' : "application/x-www-form-urlencoded"
         }
     }).then(function(response){
+        
         return response.text();
     }).then(function(regenerateGame){
-        c
     })
 }
-
 
 function editGame(id, gameObject1,callback){
   console.log(id)
@@ -65,9 +64,8 @@ function editGame(id, gameObject1,callback){
         return response.text();
     }).then(function(editGameResponse) {
        callback(editGameResponse)
-    }).catch(err =>  {
-        console.log('my error from put is: ', err);
         
     })
 }
+
 
