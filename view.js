@@ -26,8 +26,8 @@ function createDomElement(gameObj){
         if(event.target.classList.contains('delete-btn')) {
                 deleteGame(gameELement.getAttribute("id"), function(apiResponse){
                     console.log('apiResponse ',apiResponse);
-                    removeDeletedElementFromDOM(event.target.parentElement);
-                    console.log("raspuns: " ,removeDeletedElementFromDOM(event.target.parentElement));
+                    removeDeletedElementFromDOM(gameELement);
+                   
                 })
         } else if(event.target.classList.contains('editBtn')) {
                 createUpdateForm(event.target.parentElement) 
