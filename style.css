@@ -3,7 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+h1.myh {
+    text-align: center;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-shadow: 1px 1px 3px #333333;
+    border-bottom: 5px solid #333333;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
 .delete-btn {
     width: 120px;
     height: 40px;
@@ -82,7 +91,7 @@ button {
    flex-direction: column;
    margin: 5px;
 }
-#updateForm > button:first-of-type{
+.updateBtn{
     width: 120px;
     height: 40px;
     border-radius: 5px;
@@ -93,7 +102,7 @@ button {
     
    
 }
-#updateForm > button:last-child {
+.cancelBtn{
     width: 120px;
     height: 40px;
     border-radius: 5px;
