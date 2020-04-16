@@ -20,7 +20,7 @@ function createDomElement(gameObj){
 
         if(event.target.classList.contains('delete-btn')) {
                 deleteGame(gameELement.getAttribute("id"), function(apiResponse){
-                    removeDeletedElementFromDOM(formElement);
+                    removeDeletedElementFromDOM(gameElement);
                 })
         } else if(event.target.classList.contains('editBtn')) {
                 createUpdateForm(event.target.parentElement) 
