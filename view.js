@@ -16,13 +16,8 @@ function createDomElement(gameObj){
                         <img class="imageUrl" src="${gameObj.imageUrl}" />
                         <p class="description">${gameObj.description}</p> 
                         <button class="delete-btn">Delete Game</button>
-<<<<<<< HEAD
                         <button class="editBtn">Edit Game</button>`;  
                        
-=======
-                        <button class="edit-btn">Edit Game</button>`;  
-                        // <p>Game ID: <strong>${gameObj._id}</strong></p> 
->>>>>>> 4a1d8129b67007973d21ee812827fe54023513bb
                         
     container1.appendChild(gameELement);
     
@@ -32,11 +27,7 @@ function createDomElement(gameObj){
                     console.log('apiResponse ',apiResponse);
                     removeDeletedElementFromDOM(gameELement);
                 });
-<<<<<<< HEAD
         } else if (event.target.classList.contains('editBtn')) {
-=======
-        } else if (event.target.classList.contains('edit-btn')) {
->>>>>>> 4a1d8129b67007973d21ee812827fe54023513bb
                 createUpdateForm(event.target.parentElement);
         }   
     });
@@ -58,12 +49,7 @@ function createUpdateForm(gameContainer) {
         const oldImageURL = gameImageURL.src;
       
         var formElement = document.createElement('form');
-<<<<<<< HEAD
         formElement.setAttribute('id', 'updateForm');    
-=======
-        formElement.setAttribute('id', 'updateForm');   
-        formElement.classList.add('updateForm');     
->>>>>>> 4a1d8129b67007973d21ee812827fe54023513bb
         formElement.innerHTML =  `<label for="updatedGameTitle">Title</label>
                                 <input type="text" value="${gameTitle.innerText}" name="gameTitle" id="updatedGameTitle" />
                         
@@ -185,11 +171,7 @@ reloadDataBase.style.left = "150px";
 reloadDataBase.style.top = "-55px"; 
 reloadDataBase.style.padding = "10px";
 reloadDataBase.style.cursor = "pointer";
-<<<<<<< HEAD
 reloadDataBase.style.backgroundColor = "#E67E22";
-=======
-reloadDataBase.style.backgroundColor = "slategray";
->>>>>>> 4a1d8129b67007973d21ee812827fe54023513bb
 reloadDataBase.style.color = "white";
 reloadDataBase.style.fontWeight = "bold";
 reloadDataBase.style.border = "none";
